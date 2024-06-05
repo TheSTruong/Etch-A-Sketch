@@ -1,5 +1,13 @@
 const board = document.querySelector(".drawingBoard");
 
+function RGBcolor() {
+    var R = Math.floor(Math.random() * 256);
+    var G = Math.floor(Math.random() * 256);
+    var B = Math.floor(Math.random() * 256);
+    var randomcolor = "rgb(" + R + "," + G + "," + B + ")";
+    return randomcolor;
+}
+
 for (let row = 0; row < 16; row++) {
     let div = document.createElement('div');
     div.classList = "row";
@@ -10,7 +18,7 @@ for (let row = 0; row < 16; row++) {
         box.style.flex = "1";
 
         box.addEventListener("mouseover", e => {
-            e.currentTarget.style.backgroundColor = "red";
+            e.currentTarget.style.backgroundColor = RGBcolor();
 
         });
 
