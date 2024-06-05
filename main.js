@@ -8,7 +8,12 @@ for (let row = 0; row < 16; row++) {
     for (let col = 0; col < 16; col++) {
         let box = document.createElement('div');
         box.style.flex = "1";
-        box.style.border = "1px solid white";
+
+        box.addEventListener("mouseover", e => {
+            e.currentTarget.style.backgroundColor = "red";
+
+        });
+
         div.appendChild(box);
     }
     board.appendChild(div);
