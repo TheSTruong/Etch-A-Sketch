@@ -1,3 +1,7 @@
+let rainbowMode = false;
+let colorMode = true;
+let eraser = false;
+
 function populateGrid(dimension) {
     const board = document.querySelector(".drawingBoard");
     const main = document.querySelector(".main");
@@ -19,17 +23,34 @@ function populateGrid(dimension) {
             box.style.flex = "1";
             box.addEventListener("mouseover", e => {
                 if (e.type === 'mouseover' && !mouseDown) return;
-                e.currentTarget.style.backgroundColor = RGBcolor();
+                if (rainbowMode)
+                    e.currentTarget.style.backgroundColor = RGBcolor();
+                else if (colorMode) {
+                    let colorPicker = document.querySelector("input");
+                    e.currentTarget.style.backgroundColor = colorPicker.value;
+                }
+                else if (eraser) {
+                    e.currentTarget.style.backgroundColor = "aliceblue";
+                }
             });
             box.addEventListener("mousedown", e => {
-                e.currentTarget.style.backgroundColor = RGBcolor();
+                if (e.type === 'mouseover' && !mouseDown) return;
+                if (rainbowMode)
+                    e.currentTarget.style.backgroundColor = RGBcolor();
+                else if (colorMode) {
+                    let colorPicker = document.querySelector("input");
+                    e.currentTarget.style.backgroundColor = colorPicker.value;
+                }
+                else if (eraser) {
+                    e.currentTarget.style.backgroundColor = "aliceblue";
+                }
             });
             div.appendChild(box);
         }
         board.appendChild(div);
+        console.log(rainbowMode);
     }
 }
-
 
 function RGBcolor() {
     var R = Math.floor(Math.random() * 256);
@@ -39,10 +60,7 @@ function RGBcolor() {
     return randomcolor;
 }
 
-// Slider for adjusting grid size
-let slider = document.querySelector("#size");
-let sliderValue = document.querySelector(".size-value");
-slider.addEventListener("input", e => {
+function clearGrid() {
     sliderValue.textContent = `${slider.value} x ${slider.value}`;
     const board = document.querySelector(".drawingBoard");
     const main = document.querySelector(".main");
@@ -51,15 +69,50 @@ slider.addEventListener("input", e => {
     newBoard.classList = "drawingBoard";
     main.prepend(newBoard);
     populateGrid(slider.value);
+}
+// Slider for adjusting grid size
+let slider = document.querySelector("#size");
+let sliderValue = document.querySelector(".size-value");
+slider.addEventListener("input", clearGrid);
 
-});
+function buttonToggle(button) {
+    let btns = document.querySelectorAll(".optionButtonTogg");
+    btns.forEach(but => {
+        if (but !== button) {
+            but.style.backgroundColor = "#ededed";
+            but.style.color = "#2d2d2d";
+        }
+        else {
+            but.style.backgroundColor = "#2d2d2d";
+            but.style.color = "white";
+            if (but.id === "colorMode") {
+                colorMode = true;
+                rainbowMode = false;
+                eraser = false;
+            }
+            else if (but.id === "randomMode") {
+                colorMode = false;
+                rainbowMode = true;
+                eraser = false;
+            }
+            else {
+                colorMode = false;
+                rainbowMode = false;
+                eraser = true;
+            }
+        }
+    });
+}
 
-let btns = document.querySelectorAll(".optionButton");
+let btns = document.querySelectorAll(".optionButtonTogg");
 btns.forEach(btn => {
     btn.addEventListener("click", e => {
-        e.target
+        buttonToggle(e.target);
     });
 });
+
+let clearBtn = document.querySelector("#clearBtn");
+clearBtn.addEventListener("click", clearGrid);
 populateGrid(16);
 
 

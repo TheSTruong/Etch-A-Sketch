@@ -1,3 +1,3 @@
 # etch-a-sketch
-TOP Project: Etch-a-Sketch
+Project: Etch-a-Sketch <br />
 Javascript fundamentals and event practice.
