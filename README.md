@@ -1,5 +1,5 @@
 # Etch-a-sketch
-Project: Etch-a-Sketch <br />
-Javascript fundamentals and event practice created with HTML, CSS and JS.
+Etch-a-Sketch game created with HTML, CSS and JS.<br />
+Javascript fundamentals and event practice
 
 [Live Demo](https://thestruong.github.io/Etch-A-Sketch/) :point_left:
