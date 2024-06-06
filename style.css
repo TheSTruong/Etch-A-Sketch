@@ -69,23 +69,30 @@ footer {
     gap: 10px;
 }
 
+button {
+    border-radius: 100px;
+    border: 1px solid gray;
+    font-weight: bold;
+    font-size: 16px;
+}
+
 .optionButton {
     flex: 1;
-    padding: 0;
-    border: 1px solid gray;
 }
 
 input[type="color"] {
-    width: 40px;
-    height: 40px;
-}
-
-input[type="color"]::-webkit-color-swatch-wrapper {
-    padding: 0;
-}
-
-input[type="color"]::-webkit-color-swatch {
+    opacity: 0;
+    display: block;
+    width: 32px;
+    height: 32px;
     border: none;
+}
+
+.color-picker-wrapper {
+    border: 1px solid gray;
+    border-radius: 50px;
+    flex: 1;
+    display: flex;
 }
 
 input[type='range'] {

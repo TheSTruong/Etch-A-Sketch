@@ -1,12 +1,15 @@
 let rainbowMode = false;
 let colorMode = true;
 let eraser = false;
+let slider = document.querySelector("#size");
+let sliderValue = document.querySelector(".size-value");
+
+slider.addEventListener("input", clearGrid);
 
 function populateGrid(dimension) {
     const board = document.querySelector(".drawingBoard");
     const main = document.querySelector(".main");
     main.addEventListener("mouseup", () => (mouseDown = false));
-    // Dealing with coloring the board
     let mouseDown = false;
     board.addEventListener("mousedown", e => {
         e.preventDefault();
@@ -70,10 +73,6 @@ function clearGrid() {
     main.prepend(newBoard);
     populateGrid(slider.value);
 }
-// Slider for adjusting grid size
-let slider = document.querySelector("#size");
-let sliderValue = document.querySelector(".size-value");
-slider.addEventListener("input", clearGrid);
 
 function buttonToggle(button) {
     let btns = document.querySelectorAll(".optionButtonTogg");
@@ -113,6 +112,13 @@ btns.forEach(btn => {
 
 let clearBtn = document.querySelector("#clearBtn");
 clearBtn.addEventListener("click", clearGrid);
+
+var color_picker = document.getElementById("color-picker");
+var color_picker_wrapper = document.querySelector(".color-picker-wrapper");
+color_picker.onchange = function () {
+    color_picker_wrapper.style.backgroundColor = color_picker.value;
+}
+
+color_picker_wrapper.style.backgroundColor = color_picker.value;
+
 populateGrid(16);
-
-
