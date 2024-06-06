@@ -35,15 +35,9 @@ header {
     align-items: center;
 }
 
-.settings {
-    display: flex;
-    flex-direction: column;
-    font-size: 30px;
-    font-weight: bold;
-}
-
 .drawingBoard {
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     height: 600px;
     display: flex;
     flex-direction: column;
@@ -59,20 +53,27 @@ footer {
     gap: 16px;
 }
 
+#sizeValue {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
 #size {
-    width: 600px;
+    max-width: 600px;
 }
 
 .options {
     display: flex;
-    width: 600px;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 button {
     border-radius: 100px;
     border: 1px solid gray;
     font-weight: bold;
+    width: 130px;
     font-size: 16px;
 }
 
